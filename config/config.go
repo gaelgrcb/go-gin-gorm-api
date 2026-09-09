@@ -1,4 +1,4 @@
-package configs
+package config
 
 import (
 	"CRUD/pkg/database"
