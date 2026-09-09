@@ -1,20 +1,36 @@
 package main
 
 import (
+	"CRUD/config"
+	"CRUD/pkg/database"
+	"CRUD/pkg/response"
+	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
+	cfg, err := config.LoadConfig(".")
+	if err != nil {
+		log.Fatalf("failed to load config: %v", err)
+	}
+
+	_, err = database.Connect(cfg.DB)
+	if err != nil {
+		log.Fatalf("database error: %v", err)
+	}
+
 	router := gin.Default()
 
 	router.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "pong")
+		response.Ok(c, "Successful Response", nil)
 	})
 
-	err := http.ListenAndServe(":8080", router)
+	port := ":" + cfg.AppPort
+
+	err = http.ListenAndServe(port, router)
 	if err != nil {
-		return
+		log.Fatalf("Error initializing the server: %v", err)
 	}
 }
