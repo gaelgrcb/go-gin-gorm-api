@@ -28,7 +28,7 @@ func Connect(cfg DBConfig) (*gorm.DB, error) {
 		PrepareStmt:            true,
 	})
 	if err != nil {
-		return nil, fmt.Errorf("failed to connect database: %w", err)
+		return nil, fmt.Errorf("gorm open: %w", err)
 	}
 
 	sqlDB, err := db.DB()
