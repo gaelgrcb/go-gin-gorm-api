@@ -27,6 +27,10 @@ func main() {
 		response.Ok(c, "Successful Response", nil)
 	})
 
+	router.GET("/api", func(c *gin.Context) {
+		response.Ok(c, "Successful Response", nil)
+	})
+
 	port := ":" + cfg.AppPort
 
 	err = http.ListenAndServe(port, router)
