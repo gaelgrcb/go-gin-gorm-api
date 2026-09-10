@@ -1,11 +1,12 @@
 package main
 
 import (
-	"CRUD/config"
-	"CRUD/pkg/database"
-	"CRUD/pkg/response"
 	"log"
 	"net/http"
+
+	"github.com/gaelgrcb/go-gin-gorm-api/config"
+	"github.com/gaelgrcb/go-gin-gorm-api/pkg/database"
+	"github.com/gaelgrcb/go-gin-gorm-api/pkg/response"
 
 	"github.com/gin-gonic/gin"
 )

@@ -1,8 +1,9 @@
 package config
 
 import (
-	"CRUD/pkg/database"
 	"fmt"
+
+	"github.com/gaelgrcb/go-gin-gorm-api/pkg/database"
 
 	"github.com/spf13/viper"
 )

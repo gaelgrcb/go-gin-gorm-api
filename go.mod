@@ -1,4 +1,4 @@
-module CRUD
+module github.com/gaelgrcb/go-gin-gorm-api
 
 go 1.27.1
 
