@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/gaelgrcb/go-gin-gorm-api/internal/domain"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -40,6 +41,11 @@ func Connect(cfg DBConfig) (*gorm.DB, error) {
 	sqlDB.SetMaxIdleConns(10)
 	sqlDB.SetMaxOpenConns(100)
 	sqlDB.SetConnMaxLifetime(time.Hour)
+
+	err = db.AutoMigrate(&domain.Category{}, &domain.Product{}, &domain.StockMovement{})
+	if err != nil {
+		return nil, fmt.Errorf("failed to auto migrate: %w", err)
+	}
 
 	return db, nil
 }
